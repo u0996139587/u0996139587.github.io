@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RC - Roberto Calì</title>
+  <style>
+    :root{--accent:#2ecc71;--bg:#f7f7f7;--card:#fff;--dark:#111}
+    body { margin:0; font-family:Arial,sans-serif; background:var(--bg); color:#222; transition: background 0.3s, color 0.3s; }
+    header { display:flex; align-items:center; justify-content:space-between; padding:40px 20px; background:var(--card); box-shadow:0 2px 6px rgba(0,0,0,0.05); transition: background 0.3s; }
+    .header-left { display:flex; align-items:center; gap:20px }
+    header h1 { font-size:2rem; margin:0 0 6px 0 }
+    header p { margin:0; color:#444 }
+    body.dark header p { color: #bbb; }
+
+    .container { max-width:900px; margin:30px auto; padding:0 20px }
+    section { background:var(--card); padding:20px; border-radius:12px; margin-bottom:20px; transition: background 0.3s; }
+    h2 { margin-top:0; font-size:1.25rem; border-left:4px solid #000; padding-left:10px }
+    body.dark h2 { border-left-color: var(--accent); }
+    footer { text-align:center; color:#555; font-size:0.9rem; padding:18px }
+    body.dark footer { color: #777; }
+
+    .skills-wrapper { display:flex; gap:20px; flex-wrap:wrap }
+    .skills-column { flex:1 1 320px; min-width:260px }
+
+    .skill { margin-bottom:16px }
+    .skill-name { font-weight:600; margin-bottom:6px; display:block }
+
+    .skill-bar { display:flex; gap:4px; }
+    .skill-bar-segment { flex:1; height:18px; background:var(--dark); border-radius:6px; overflow:hidden; position:relative }
+    body.dark .skill-bar-segment { background: #333; }
+    .skill-bar-fill { position:absolute; left:0; top:0; height:100%; width:0%; background:var(--accent); border-radius:6px; transition: width 0.3s linear }
+
+    .dark-switch { display:flex; align-items:center; gap:6px; cursor:pointer }
+    .dark-switch input { display:none }
+    .switch-slider { width:50px; height:24px; background:#ccc; border-radius:12px; position:relative; transition:0.3s }
+    .switch-slider::before { content:''; position:absolute; width:20px; height:20px; background:#fff; border-radius:50%; top:2px; left:2px; transition:0.3s }
+    input:checked + .switch-slider::before { transform:translateX(26px) }
+    input:checked + .switch-slider { background:#2ecc71 }
+
+    body.dark{ background:#0f0f0f; color:#ddd }
+    body.dark section, body.dark header{ background:#161616 }
+
+    .job, .edu-item { margin-bottom: 15px; }
+    .job:last-child, .edu-item:last-child { margin-bottom: 0; }
+    .job-title, .edu-title { font-weight: bold; margin-bottom: 4px; }
+    .job-title span, .edu-title span { font-weight: normal; font-style: italic; font-size: 0.95rem; }
+
+    @media (max-width:600px){ header{flex-direction:column; align-items:flex-start; padding:24px; gap: 20px;} .skills-wrapper{flex-direction:column} }
+	
+	.contdos-link { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; cursor: pointer; }
+	.contdos-text { color: #007bff; font-weight: 600; transition: opacity 0.3s ease; }
+	.contdos-logo { width: 16px; height: 16px; opacity: 0.8; transition: opacity 0.3s ease, transform 0.2s ease; }
+	.contdos-link:hover .contdos-text { opacity: 0.8; }
+	.contdos-link:hover .contdos-logo { opacity: 1; transform: scale(1.1); }
+	
+	.privacy-note { text-align: center; font-size: 0.85rem; color: #666; line-height: 1.4; margin-top: 40px; margin-bottom: 40px; max-width: 900px; margin-left: auto; margin-right: auto; padding: 0 20px; }
+	
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="profile-pic" style="width:110px;height:110px;border-radius:50%;background:#ddd;display:flex;align-items:center;justify-content:center;font-size:0.85rem;color:#555">FOTO</div>
+      <div>
+        <h1>Roberto Calì</h1>
+        <p>Aspirante Architetto Software &bull; Security Researcher Amatoriale </p>
+		<p>Tivoli &bull; Classe 2004</p>
+		<p>rc.ml8796@gmail.com &bull; <a class="contdos-link" href="https://signal.me/#eu/C5nVzqVGo2CnLzkuwk6-DTHK8KuNwN1ccf8C2IqblGmH1rSgjTtMA40cRCcE-LdL" target="_blank">
+									  <span class="text">@gethesigRC.62</span>
+									  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Signal-Logo.svg"
+									  alt="Signal" class="contdos-logo">
+									  </a>
+								  </p>
+      </div>
+    </div>
+    <label class="dark-switch">
+      <input type="checkbox" id="toggleDark">
+      <span class="switch-slider"></span>
+    </label>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2>Profilo</h2>
+      <p>Tecnico informatico con basi solide di sviluppo algoritmico, OOP e nozioni di scripting. Appassionato di sicurezza e dell'architettura dei sistemi operativi, sia Desktop che Mobile (Windows, Linux, (Apple)OS e molti altri). Ambizioso e orientato all'architettura di sistemi complessi, ho eccellenti capacità di problem solving e comunicazione, affinate in progetti tecnici privati e non (Maker Faire) e in ruoli di rappresentanza studentesca.</p>
+    </section>
+
+    <section>
+      <h2>Attività Rilevanti</h2>
+      <div class="job">
+        <div class="job-title">Rappresentante Studentesco <span>(Consulta Provinciale & Istituto)</span> &ndash; (2022 – 2024)</div>
+        <p>Mediazione tra studenti e dirigenza, organizzazione eventi e coordinamento. Competenze acquisite: leadership, negoziazione e comunicazione strategica.</p>
+      </div>
+      <div class="job">
+        <div class="job-title">Espositore Progetto Tecnico <span>(Maker Faire Rome)</span> &ndash; (2023)</div>
+        <p>Progetto "Aqua&Terra": integrazione di sensori IoT con web services e piattaforma cloud, dimostrando capacità di gestione di sistemi interconnessi.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Istruzione</h2>
+      <div class="edu-item">
+        <div class="edu-title">Diploma in Informatica e Telecomunicazioni &ndash; I.T.T.S. A. Volta (2024)</div>
+        <p>Articolazione "Informatica". Voto 63/100. Focus su programmazione, networking e sicurezza.</p>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">Corso Sicurezza sul Luogo di Lavoro &ndash; INAIL (2022)</div>
+      </div>
+	  <div class="edu-item">
+        <div class="edu-title">Corso "Cybersecurity Expert" ITS Lazio Digital &ndash; (2024)</div>
+      </div>
+    </section>
+
+    <section class="skills-wrapper">
+      <div class="skills-column">
+        <h2>Hard Skill</h2>
+        <div class="skill">
+          <span class="skill-name">Progettazione Architetture e Sicurezza (Security & RE)</span>
+          <div class="skill-bar" data-level="90">
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+          </div>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Amministrazione Sistemi Operativi Multi-piattaforma</span>
+          <div class="skill-bar" data-level="80">
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+          </div>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Analisi Sistemica e Gestione Reti/Hardware</span>
+          <div class="skill-bar" data-level="70">
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+          </div>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Sviluppo Software e Paradigmi (C/C++, Web, Python)</span>
+          <div class="skill-bar" data-level="70">
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+          </div>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Analisi Tecnologie Emergenti (Quantistica, Blockchain, AI)</span>
+          <div class="skill-bar" data-level="75">
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-column">
+        <h2>Soft Skill</h2>
+        <div class="skill">
+          <span class="skill-name">Leadership, Comunicazione e Team Working</span>
+          <div class="skill-bar" data-level="80">
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+          </div>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Problem Solving e Iniziativa Autonoma</span>
+          <div class="skill-bar" data-level="83">
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+          </div>
+        </div>
+        <div class="skill">
+          <span class="skill-name">Lingua Inglese (B1)</span>
+          <div class="skill-bar" data-level="68">
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+            <div class="skill-bar-segment"><div class="skill-bar-fill"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="privacy-note"> Autorizzo il trattamento dei miei dati personali presenti nel CV ai sensi dell’art. 13 d. lgs. 30 giugno 2003 n. 196 - “Codice in materia di protezione dei dati personali” e dell’art. 13 GDPR 679/16 - “Regolamento europeo sulla protezione dei dati personali”. </div>
+  
+  <footer>&copy; 2025 &bull; RC</footer>
+
+  <script>
+    const toggle = document.getElementById('toggleDark');
+    toggle.addEventListener('change', ()=>document.body.classList.toggle('dark', toggle.checked));
+
+    // Funzione per animare le barre quando entrano nel viewport
+    const skillBars = Array.from(document.querySelectorAll('.skill-bar'));
+
+    function animateSegment(bar, fills, target, index=0){
+      if(index >= fills.length) return;
+      const perSeg = 100/fills.length; // 20% per segment
+      let levelForSeg = Math.min(Math.max(target - (perSeg * index), 0), perSeg);
+      fills[index].style.width = (levelForSeg / perSeg * 100) + '%';
+      setTimeout(()=>animateSegment(bar, fills, target, index + 1), 70); 
+    }
+
+    function animateBar(bar){
+      const target = parseFloat(bar.getAttribute('data-level') || 0);
+      const fills = Array.from(bar.querySelectorAll('.skill-bar-segment .skill-bar-fill'));
+      // Resetta le barre prima di animarle
+      fills.forEach(f => f.style.width = '0%');
+      // Avvia l'animazione
+      setTimeout(() => animateSegment(bar, fills, target), 100);
+    }
+
+    // Intersection Observer per efficienza
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateBar(entry.target);
+          // Smetti di osservare dopo la prima animazione
+          // observer.unobserve(entry.target); 
+        }
+      });
+    }, { threshold: 0.25 }); // Avvia l'animazione quando il 25% della barra è visibile
+
+    skillBars.forEach(bar => {
+      observer.observe(bar);
+    });
+
+    const mo = new MutationObserver(muts=>{
+      muts.forEach(m=>{
+        if(m.type==='attributes' && m.attributeName==='data-level') animateBar(m.target);
+      });
+    });
+    skillBars.forEach(b=>mo.observe(b,{attributes:true}));
+  </script>
+</body>
+</html>
